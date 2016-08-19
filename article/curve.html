@@ -1,0 +1,90 @@
+<html>
+<style>
+	.curve{
+		background:#c9c9c9;
+		position:fixed;
+		top:600px;
+		text-align:center;
+		font-size: 30px;
+		left:0px;
+		width:50px;
+		height:50px;
+		color:#fff;
+		line-height: 300px;
+		border-radius: 100%;
+	}
+	.shoot{
+		position:fixed;
+		top:620px;
+		left:0px;
+		width:50px;
+		height:50px;
+		background:#dcdcdc;
+	}
+	.error{
+		position:fixed;
+		top: 315px;
+        left: 811px;
+        transform:rotateX(75deg);
+        color:#d2d2d2;
+        font-size:100px;
+	}
+	.target{
+		width:50px;
+		height:50px;
+		display:inline-block;
+		background:rgba(0,0,0,0);
+		border:10px solid #d2d2d2;
+		border-radius: 100%;
+		
+	}
+	
+</style>
+<body>
+<div class="score">score:<span id="score">0</span></div>
+<div class="curve" id="curve">click</div>
+<div class="shoot"></div>
+<div class="error"><span class="target" id="target"></span></div>
+<script>
+var curve=document.getElementById("curve");
+var target=document.getElementById("target");
+var score=document.getElementById("score");
+document.body.addEventListener("click",function(e){
+	var el=curve;
+		var sx=0,sy=0,scaleS=1,
+		ex=800,//终点位置的x坐标
+		ey=300;//终点位置的y坐标
+
+		var sin=function(){
+			sx+=20;
+			if(sx>=ex/2){
+				sx+=1;
+			}
+			sy=-(Math.sin(sx*Math.PI/ex)*e.y+ey);
+
+			scaleS=1+3*sx/ex;
+			scaleS=1;
+			
+			el.style["webkitTransform"]='translate(' + sx + 'px,' + sy + 'px)'+' scale(' + scaleS + ',' + scaleS + ')';
+
+			if(sx<=ex){
+				requestAnimationFrame(sin);
+			}else{
+				var by=el.getBoundingClientRect().top,
+				ty=target.getBoundingClientRect().top;
+				console.log(Math.abs(by-ty)<=11);
+				setTimeout(function(){
+						el.style["webkitTransform"]="";
+					},90);
+				if(Math.abs(by-ty)<=11){
+					score.innerHTML =parseInt(score.innerText)+1;
+				}
+			}
+		}
+		
+		sin();
+});
+
+</script>
+</body>
+</html>
