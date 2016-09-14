@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>FPS Game</title>
+		<link rel="stylesheet" href="main.css" />
+	</head>
+	<body>
+		<script type="shader-code" id="fragShader">
+			uniform vec2 res;//屏幕的宽高
+			uniform sampler2D bufferTexture;
+		    uniform vec3 smokeSource;
+			void main(){
+				vec2 pixel=gl_FragCoord.xy/res.xy;
+				gl_FragColor=texture2D(bufferTexture,pixel);
+		    float dist = distance(smokeSource.xy,gl_FragCoord.xy);
+		    gl_FragColor.b+=100.0;
+		    gl_FragColor.rgb += smokeSource.z * max(150.0-dist,0.0);
+		    //烟雾传播
+		    float xPixel=1.0/res.x;//单个像素的大小
+		    float yPixel=1.0/res.y;
+
+		    vec4 rightColor = texture2D(bufferTexture,vec2(pixel.x+xPixel,pixel.y));
+		    vec4 leftColor = texture2D(bufferTexture,vec2(pixel.x-xPixel,pixel.y));
+		    vec4 upColor = texture2D(bufferTexture,vec2(pixel.x,pixel.y+yPixel));
+		    vec4 downColor = texture2D(bufferTexture,vec2(pixel.x,pixel.y-yPixel));
+		    
+		    if(pixel.y <= yPixel){
+		        downColor.rgb = vec3(0.0);
+		    }
+		    //float factor = 14.0 * 0.016 * (leftColor.r + rightColor.r + downColor.r + upColor.r - 4.0 * gl_FragColor.r);
+		    float factor = 8.0 * 0.016 * 
+		    (
+		        leftColor.r + 
+		        rightColor.r + 
+		        downColor.r * 3.0 + 
+		        upColor.r - 
+		        6.0 * gl_FragColor.r
+		    );
+		    //We have to account for the low precision of texels
+		    float minimum = 0.003;
+		    if (factor >= -minimum && factor < 0.0) factor = -minimum;
+		     
+		    gl_FragColor.rgb += factor;
+			}
+		</script>
+		<script src="bigscreen.min.js"></script>
+		<script src="pointerlock.js"></script>
+		<script src="three.min.js"></script>
+		<script src="player.js"></script>
+		<script src="circle.js"></script>
+		<script src="flymain.js"></script>
+	</body>
+</html>
