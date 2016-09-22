@@ -1,7 +1,7 @@
 function Bullet(direction) {
 	THREE.Mesh.call(this,
 		new THREE.SphereGeometry(Bullet.RADIUS, 6, 6),
-		new THREE.MeshBasicMaterial({ color: 0xe4e4e4 })
+		new THREE.MeshBasicMaterial({ color: 0x333333 })
 	);
 
 
