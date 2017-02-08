@@ -1,0 +1,89 @@
+<html>
+<head>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>图片压缩</title>
+<style>
+body{
+	    font-family: Menlo,Monaco,Consolas,"Andale Mono","lucida console","Courier New",monospace;
+}
+pre {
+    margin: 1em 0;
+    padding: .4em .6em;
+    font-size: 15px;
+    line-height: 1.5;
+    border-radius: 2px;
+    background: #f8f8f8;
+	display: block;
+    white-space: pre-wrap;
+    color: rgb(51, 51, 51);
+}
+</style>
+</head>
+<body>
+<div style="width:800px;margin:0 auto">
+<h3>gulpfile.js:</h3>
+<pre lang="js">
+var gulp = require('gulp'),
+    imagemin = require('gulp-imagemin'),
+    pngquant = require('imagemin-pngquant'),
+    imageminJpegRecompress = require('imagemin-jpeg-recompress'),
+    notify = require('gulp-notify'),
+    fs=require("fs");
+
+
+var imageMin=function(source,dist){
+    gulp.src(source)
+    .pipe(imagemin({ 
+      optimizationLevel: 7, 
+      progressive: false,
+      use: [pngquant({quality: '65-80', speed: 4}),imageminJpegRecompress({loops: 3})]
+     }))
+    .pipe(gulp.dest(dist))
+    .pipe(notify({ message: 'Images task complete:'+source }));
+};
+
+//遍历所有文件
+var scanFolder=function(path){
+    var  walk = function(path){
+            files = fs.readdirSync(path);
+            files.forEach(function(item) {  
+                var tmpPath = path + '/' + item,
+                    stats = fs.statSync(tmpPath);
+
+                if (stats.isDirectory()) {  
+                    walk(tmpPath); 
+                } else { 
+                    var imagetype=tmpPath.substr(tmpPath.length-3);
+                    var last=tmpPath.lastIndexOf('/');
+                    var imgfolder=tmpPath.substr(0,last);
+
+                    if(imagetype=="png"||imagetype=="jpg"||imagetype=="gif"||imagetype=="ttf"){
+                      console.log('正在扫描文件' + tmpPath+"父文件夹"+imgfolder);
+                      imageMin(tmpPath,imgfolder);
+                    }
+                    
+                }  
+            });  
+        };  
+
+    walk(path);
+
+    console.log('扫描' + path +'成功');
+}
+
+function main(argv){
+    console.log("要压缩图片的文件夹："+argv[0]);
+    scanFolder(argv[0]);
+}
+
+main(process.argv.slice(2));
+<font face="-apple-system, Helvetica Neue, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif"><span>
+</span></font></pre>
+<p><span style="line-height: 1.7;">使用：</span></p>
+<p><span style="line-height: 1.7;">要压缩的图片文件夹如“E:/imagemin/app”</span><br></p>
+<p><span style="line-height: 1.7;">运行命令node gulpfile E:/imagemin/app</span><br></p>
+</div>
+</body>
+</html>
