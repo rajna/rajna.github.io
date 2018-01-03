@@ -169,20 +169,19 @@
 		  //  params=$.extend({},params,options);
 		  //}
 		    var formwrap=".overlayContentforxiaoma_zhonghe ";
-		    $('.xiaomaclue-mobile-zonghe-type1').on('click',function(){
+		    $('.xiaomaclue-mobile-zonghe-type1').on('touchend',function(){
 		      $('.overlayContentforxiaoma_zhonghe').show();
 		      $('.layer-bg-zhonghe-type1').show();
 		    });
 
 		    /*隐藏浮层*/
-		    $('body').on('click', '.overlayContentforxiaoma_zhonghe .close_btn', function(){
+		    $('body').on('touchend', '.overlayContentforxiaoma_zhonghe .close_btn', function(){
 		      $('.overlayContentforxiaoma_zhonghe').hide();
 		      $('.layer-bg-zhonghe-type1').hide();
 		      $(formwrap+"#subjectwrap,"+formwrap+"#subjectwrap+.subjectWarn").hide();
 		    });
 
 		    $('body').on('touchend', '.layer-bg-zhonghe-type1', function(){
-			    alert("fff");
 		      $('.overlayContentforxiaoma_zhonghe').hide();
 		      $('.layer-bg-zhonghe-type1').hide();
 		      $(formwrap+"#subjectwrap,"+formwrap+"#subjectwrap+.subjectWarn").hide();
@@ -198,7 +197,7 @@
 		      }
 		    });
 
-		    $('body').on('click', '.overlayContentforxiaoma_zhonghe2 .pop', function(){
+		    $('body').on('touchend', '.overlayContentforxiaoma_zhonghe2 .pop', function(){
 		      $('.overlayContentforxiaoma_zhonghe').show();
 		      $('.layer-bg-zhonghe-type1').show();
 		    });
@@ -213,7 +212,7 @@
 		    }
 
 		    /*type4选择学科*/
-		    $('body').on('click', '.overlayContentforxiaoma_zhonghe .subjectitem span', function(){
+		    $('body').on('touchend', '.overlayContentforxiaoma_zhonghe .subjectitem span', function(){
 		    	if($(this).hasClass("subjectitem_select")){
 		    		$(this).removeClass("subjectitem_select");
 		    	}else{
@@ -221,17 +220,17 @@
 		    	}
 		    });
 
-		    $('body').on('click', '.overlay-success .close_btn', function(){
+		    $('body').on('touchend', '.overlay-success .close_btn', function(){
 		      $('.layer-bg-success').hide();
 		      $('.overlay-success').hide();
 		    });
-		    $('body').on('click', '.layer-bg-success', function(){
+		    $('body').on('touchend', '.layer-bg-success', function(){
 		      $('.layer-bg-success').hide();
 		      $('.overlay-success').hide();
 		    });
 
 		    /*注册按钮点击*/
-		    $('body').on('click', '.overlayContentforxiaoma_zhonghe .regBtn', function(){
+		    $('body').on('touchend', '.overlayContentforxiaoma_zhonghe .regBtn', function(){
 		    	
 		      var subject=$(".overlayContentforxiaoma_zhonghe .subjectitem span.subjectitem_select");
 		      var tel =$.trim($(formwrap+'.phone').val());
