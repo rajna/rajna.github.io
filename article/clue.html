@@ -188,7 +188,7 @@
 		      $(formwrap+"#subjectwrap,"+formwrap+"#subjectwrap+.subjectWarn").hide();
 		    });
 
-		    $('body').on('click', '.overlayContentforxiaoma_zhonghe .nav span', function(){
+		    $('body').on('touchend', '.overlayContentforxiaoma_zhonghe .nav span', function(){
 		      $(".overlayContentforxiaoma_zhonghe .nav span").removeClass("active");
 		      if(!$(this).hasClass("active")){
 		      	$(this).addClass("active");
