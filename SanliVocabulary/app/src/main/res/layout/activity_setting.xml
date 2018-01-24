@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f6f6f6">
+    <include layout="@layout/setting_title" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        android:layout_marginTop="59dp"
+        >
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true">
+
+
+            <include layout="@layout/setting_order" />
+
+            <include layout="@layout/setting_time" />
+
+            <include layout="@layout/setting_alarm" />
+
+            <Button
+                android:id="@+id/btn_two"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="GO"
+                android:textSize="17sp"
+                android:textColor="@color/colorWhite"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="18dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/fuxigobutton"/>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

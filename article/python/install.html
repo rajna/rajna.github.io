@@ -1,0 +1,71 @@
+<html>
+<head>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>python</title>
+<style>
+body{
+	    font-family: Menlo,Monaco,Consolas,"Andale Mono","lucida console","Courier New",monospace;
+}
+pre {
+    margin: 1em 0;
+    padding: .4em .6em;
+    font-size: 15px;
+    line-height: 1.5;
+    border-radius: 2px;
+    background: #f8f8f8;
+	display: block;
+    white-space: pre-wrap;
+    color: rgb(51, 51, 51);
+}
+</style>
+</head>
+<body>
+<div style="width:800px;margin:0 auto">
+系统是os x EI Capitan    版本10.11.6<br/>
+
+python的版本是系统自带的2.7版本，之前安装了高版本的python3，结果xcode打不开了，又装回了python2.7<br/>
+
+1、xcode下运行python代码配置如下<br/>
+
+http://my.oschina.net/u/868062/blog/633281<br/>
+
+2、os安装ipython<br/>
+
+1）、sudo pip install ipython若报错<br/>
+
+2）、pip install --upgrade setuptools，或者试试sudo -H pip install ipython --ignore-installed six，再或者试试<br/>
+
+sudo -H pip install ipython --ignore-installed numpy如果还是报错，那么可能是由于系统的保护<br/>
+
+3）、解除系统保护方法如下链接http://chaishiwei.com/blog/994.html<br/>
+
+4）、pip install ipython或者pip install "ipython[all]"<br/>
+
+
+
+5)、pip install -U ipython<br/>
+
+
+
+6）、sudo pip install pync<br/>
+
+
+
+7）、sudo -H pip install jupyter --ignore-installed six<br/>
+
+
+
+8）、ipython notebook<br/>
+
+
+
+9）、关闭jupyter网页之后还需要再终端输入control+c才算真正的把notebook关闭了。<br/>
+
+
+
+10）、安装matplotlib包 ：sudo -H pip install matplotlib --ignore-installed six<br/>
+</div>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:baselineAligned="false">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginTop="20dp"
+        android:background="#fff">
+
+        <TextView
+            android:id="@+id/title_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="背词顺序"
+            android:textColor="#222"
+            android:textSize="17sp" />
+
+
+    </RelativeLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dbdbdb"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:paddingBottom="20dp"
+        android:paddingLeft="35dp"
+        android:paddingRight="35dp">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btn_order1"
+                    android:layout_width="130dp"
+                    android:layout_height="40dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="15.5dp"
+                    android:background="@drawable/settingbtndefault"
+                    android:text="词频由高到低"
+                    android:textColor="#999999"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/btn_order2"
+                    android:layout_width="130dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15.5dp"
+                    android:background="@drawable/settingbtndefault"
+                    android:text="正序A-Z"
+                    android:textColor="#999999"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btn_order3"
+                    android:layout_width="130dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15.5dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/settingbtndefault"
+                    android:text="乱序"
+                    android:textColor="#999999"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/btn_order4"
+                    android:layout_width="130dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15.5dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/settingbtndefault"
+                    android:text="逆序Z-A"
+                    android:textColor="#999999"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

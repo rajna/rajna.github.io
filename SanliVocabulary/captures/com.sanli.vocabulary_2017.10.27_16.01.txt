@@ -1,0 +1,100 @@
+TASK com.sanli.vocabulary id=337
+  ACTIVITY com.sanli.vocabulary/.MainActivity be6069e pid=2788
+    Local Activity c99d3ab State:
+      mResumed=true mStopped=false mFinished=false
+      mChangingConfigurations=false
+      mCurrentConfig={1.0 310mcc260mnc en_US ldltr sw411dp w411dp h659dp 420dpi nrml port finger -keyb/v/h dpad/v s.5}
+      mLoadersStarted=true
+      FragmentManager misc state:
+        mHost=android.app.Activity$HostCallbacks@d3f6a08
+        mContainer=android.app.Activity$HostCallbacks@d3f6a08
+        mCurState=5 mStateSaved=false mDestroyed=false
+    ViewRoot:
+      mAdded=true mRemoved=false
+      mConsumeBatchedInputScheduled=false
+      mConsumeBatchedInputImmediatelyScheduled=false
+      mPendingInputEventCount=0
+      mProcessInputEventsScheduled=false
+      mTraversalScheduled=false
+      android.view.ViewRootImpl$NativePreImeInputStage: mQueueLength=0
+      android.view.ViewRootImpl$ImeInputStage: mQueueLength=0
+      android.view.ViewRootImpl$NativePostImeInputStage: mQueueLength=0
+    Choreographer:
+      mFrameScheduled=true
+      mLastFrameTime=323950 (9 ms ago)
+    View Hierarchy:
+      com.android.internal.policy.PhoneWindow$DecorView{7ec5a1 V.E...... R....... 0,0-1080,1920}
+        android.widget.LinearLayout{1b763c6 V.E...... ........ 0,0-1080,1794}
+          android.view.ViewStub{c9fff87 G.E...... ......I. 0,0-0,0 #10203a9 android:id/action_mode_bar_stub}
+          android.widget.FrameLayout{9651eb4 V.E...... ........ 0,63-1080,1794 #1020002 android:id/content}
+            com.facebook.react.ReactRootView{2a11add V.E...... ........ 0,0-1080,1731 #1}
+              com.facebook.react.views.view.ReactViewGroup{8b5f652 V.E...... ........ 0,0-1080,1731 #4}
+                com.facebook.react.views.view.ReactViewGroup{5f9e49e V.E...... ........ 0,0-1080,1731 #7}
+                  com.facebook.react.views.drawer.ReactDrawerLayout{719e2d9 VFE...... ........ 0,0-1080,1731 #8}
+                    com.facebook.react.views.view.ReactViewGroup{bf30d23 V.E...... ........ 0,0-1080,1731 #9}
+                      com.facebook.react.views.view.ReactViewGroup{da896ab V.E...... ........ 0,0-1080,1731 #a}
+                        com.facebook.react.views.viewpager.ReactViewPager{3eed725 VFED..... ........ 0,0-1080,1519 #c}
+                          com.facebook.react.views.view.ReactViewGroup{8f7220 V.E...... ........ 2160,0-3240,1519 #2c}
+                            com.facebook.react.views.view.ReactViewGroup{ac4dd54 VFE...... ........ 0,53-1080,209 #2f}
+                              com.facebook.react.views.text.ReactTextView{d0314a7 V.ED..... ........ 53,53-1028,104 #30}
+                          com.facebook.react.views.view.ReactViewGroup{69987d9 V.E...... ........ 1080,0-2160,1519 #27}
+                            com.facebook.react.views.text.ReactTextView{1531966 V.ED..... ........ 0,0-1080,1519 #2a}
+                          com.facebook.react.views.view.ReactViewGroup{199259e V.E...... ........ 0,0-1080,1519 #d}
+                            com.facebook.react.views.view.ReactViewGroup{8727ea8 V.E...... ........ 0,0-1080,127 #10}
+                              ReactImageView{holder=DraweeHolder{controllerAttached=true, holderAttached=true, drawableVisible=true, trimmed=false, events=[ON_SET_HIERARCHY, ON_SET_CONTROLLER, ON_HOLDER_ATTACH, ON_ATTACH_CONTROLLER]}}
+                              com.facebook.react.views.view.ReactViewGroup{e785689 V.E...... ........ 374,0-706,127 #13}
+                                com.facebook.react.views.text.ReactTextView{85cb053 V.ED..... ........ 111,26-221,100 #14}
+                              com.facebook.react.views.text.ReactTextView{a90c68e V.ED..... ........ 1022,29-1037,72 #18}
+                            com.facebook.react.views.scroll.ReactScrollView{9474dc1 VFED.V... ........ 0,127-1080,1519 #1a}
+                              com.facebook.react.views.view.ReactViewGroup{ddf587f V.E...... ........ 0,0-1080,2871 #1b}
+                                com.facebook.react.views.view.ReactViewGroup{28af2bc V.E...... ........ 29,130-1051,2518 #1c}
+                                  com.facebook.react.views.text.ReactTextView{83c4e6e V.ED..... ........ 413,241-609,357 #1e}
+                                  ReactImageView{holder=DraweeHolder{controllerAttached=true, holderAttached=true, drawableVisible=true, trimmed=false, events=[ON_SET_HIERARCHY, ON_SET_CONTROLLER, ON_HOLDER_ATTACH, ON_ATTACH_CONTROLLER]}}
+                                com.facebook.react.views.view.ReactViewGroup{486d245 VFE...... ........ 0,2517-84,2635 #22}
+                                com.facebook.react.views.view.ReactViewGroup{7d6bd9a VFE...... ........ 0,2635-84,2753 #23}
+                                com.facebook.react.views.view.ReactViewGroup{34fd6cb VFE...... ........ 0,2753-84,2871 #24}
+                        com.facebook.react.views.view.ReactViewGroup{ddd10fa V.E...... ........ 0,1519-1080,1731 #32}
+                          com.facebook.react.views.view.ReactViewGroup{9626d9c V.E...... ........ 0,0-1080,212 #34}
+                            com.facebook.react.views.view.ReactViewGroup{47a808f V.E...... ........ 0,0-1080,212 #35}
+                              com.facebook.react.views.view.ReactViewGroup{43a04fd V.E...... ........ 0,207-360,212 #36}
+                            com.facebook.react.views.scroll.ReactHorizontalScrollView{8ee7f1c VFED..... ........ 0,0-1080,212 #38}
+                              com.facebook.react.views.view.ReactViewGroup{649904c V.E...... ........ 0,0-1080,212 #39}
+                                com.facebook.react.views.view.ReactViewGroup{8c413f0 VFE...... ........ 0,0-360,212 #3a}
+                                  com.facebook.react.views.view.ReactViewGroup{6abf19f V.E...... ........ 0,0-360,212 #3c}
+                                    com.facebook.react.views.view.ReactViewGroup{f3c7ac0 V.E...... ........ 149,21-212,84 #3f}
+                                      com.facebook.react.views.text.ReactTextView{2e765f2 V.ED..... ........ 15,-14-48,78 #40}
+                                    com.facebook.react.views.view.ReactViewGroup{aa6f3f9 V.E...... ........ 149,21-212,84 #42}
+                                      com.facebook.react.views.text.ReactTextView{8c25443 V.ED..... ........ 15,-14-48,78 #43}
+                                    com.facebook.react.views.text.ReactTextView{301ef3e V.ED..... ........ 132,105-228,170 #45}
+                                com.facebook.react.views.view.ReactViewGroup{52fcd69 VFE...... ........ 360,0-720,212 #48}
+                                  com.facebook.react.views.view.ReactViewGroup{1e2931 V.E...... ........ 0,0-360,212 #4a}
+                                    com.facebook.react.views.view.ReactViewGroup{ea9c14a V.E...... ........ 149,21-212,84 #4c}
+                                      com.facebook.react.views.text.ReactTextView{ace82ec V.ED..... ........ 0,-4-63,67 #4d}
+                                    com.facebook.react.views.view.ReactViewGroup{6808bb V.E...... ........ 149,21-212,84 #4f}
+                                      com.facebook.react.views.text.ReactTextView{459d6b5 V.ED..... ........ 0,-4-63,67 #50}
+                                    com.facebook.react.views.text.ReactTextView{a96e1d8 V.ED..... ........ 132,105-228,170 #53}
+                                com.facebook.react.views.view.ReactViewGroup{e26a3ee VFE...... ........ 720,0-1080,212 #55}
+                                  com.facebook.react.views.view.ReactViewGroup{890d433 V.E...... ........ 0,0-360,212 #57}
+                                    com.facebook.react.views.view.ReactViewGroup{f844384 V.E...... ........ 149,21-212,84 #59}
+                                      com.facebook.react.views.text.ReactTextView{a4aa816 V.ED..... ........ 0,-4-63,67 #5a}
+                                    com.facebook.react.views.view.ReactViewGroup{3fb276d V.E...... ........ 149,21-212,84 #5d}
+                                      com.facebook.react.views.text.ReactTextView{8047597 V.ED..... ........ 0,-4-63,67 #5e}
+                                    com.facebook.react.views.text.ReactTextView{3412fa2 V.ED..... ........ 108,105-252,170 #60}
+                    com.facebook.react.views.view.ReactViewGroup{e11c895 I.E...C.. .......D -933,0-0,1731 #62}
+                      com.facebook.react.views.view.ReactViewGroup{9bc5920 V.E...... ......ID 0,0-933,1731 #63}
+                        com.facebook.react.views.scroll.ReactScrollView{1b73023 VFED.V... .......D 0,0-933,1731 #66}
+                          com.facebook.react.views.view.ReactViewGroup{edfdaa V.E...... .......D 0,0-933,588 #67}
+                            ReactImageView{holder=DraweeHolder{controllerAttached=true, holderAttached=true, drawableVisible=true, trimmed=false, events=[ON_SET_HIERARCHY, ON_SET_CONTROLLER, ON_HOLDER_ATTACH, ON_ATTACH_CONTROLLER]}}
+                            ReactImageView{holder=DraweeHolder{controllerAttached=true, holderAttached=true, drawableVisible=true, trimmed=false, events=[ON_SET_HIERARCHY, ON_SET_CONTROLLER, ON_HOLDER_ATTACH, ON_ATTACH_CONTROLLER]}}
+                            com.facebook.react.views.scroll.ReactScrollView{638c552 VFED.V... .......D 0,315-933,588 #6b}
+                              com.facebook.react.views.view.ReactViewGroup{41afd9b V.E...... .......D 0,0-933,273 #6c}
+                                com.facebook.react.views.view.ReactViewGroup{9a56538 VFE...... ......ID 0,0-933,137 #6d}
+                                  com.facebook.react.views.view.ReactViewGroup{6dac0a1 V.E...... ......ID 45,0-933,137 #6e}
+                                    com.facebook.react.views.text.ReactTextView{1f27108 V.ED..... ........ 0,39-84,96 #70}
+                                com.facebook.react.views.view.ReactViewGroup{1935911 VFE...... ......ID 0,137-933,273 #72}
+                                  com.facebook.react.views.view.ReactViewGroup{357f287 V.E...... ......ID 45,0-933,136 #73}
+                                    com.facebook.react.views.text.ReactTextView{f5b42c6 V.ED..... ........ 0,39-168,96 #74}
+        android.view.View{5064a76 V.ED..... ........ 0,1794-1080,1920 #1020030 android:id/navigationBarBackground}
+        android.view.View{ba1d877 V.ED..... ........ 0,0-1080,63 #102002f android:id/statusBarBackground}
+    Looper (main, tid 1) {6e79ce4}
+      (Total messages: 0, polling=false, quitting=false)
