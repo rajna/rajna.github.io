@@ -1,5 +1,8 @@
 $(function(){
 	(function(){
+		var u = navigator.userAgent;
+		var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+		var clickEvent=isAndroid?"click":"touchend";
 		 var params={
 		     "userform_save":"http://sat.sljy.com/ajax/userform/setuserclew"
 		  }; 
@@ -58,7 +61,7 @@ $(function(){
 		  //  params=$.extend({},params,options);
 		  //}
 		    var formwrap=".overlayContentforxiaoma_toefl ";
-		    $('.xiaomaclue-mobile-toefl-type1').on('click',function(){
+		    $('.xiaomaclue-mobile-toefl-type1').on(clickEvent,function(){
 		      $('.overlayContentforxiaoma_toefl').show();
 		      $('.layer-bg-toefl-type1').show();
 		    });
@@ -66,18 +69,18 @@ $(function(){
 
 
 		    /*隐藏浮层*/
-		    $('body').on('click', '.overlayContentforxiaoma_toefl .close_btn', function(){
+		    $('body').on(clickEvent, '.overlayContentforxiaoma_toefl .close_btn', function(){
 		      $('.overlayContentforxiaoma_toefl').hide();
 		      $('.layer-bg-toefl-type1').hide();
 		      $(formwrap+"#subjectwrap,"+formwrap+"#subjectwrap+.subjectWarn").hide();
 		    });
-		    $('body').on('click', '.layer-bg-toefl-type1', function(){
+		    $('body').on(clickEvent, '.layer-bg-toefl-type1', function(){
 		      $('.overlayContentforxiaoma_toefl').hide();
 		      $('.layer-bg-toefl-type1').hide();
 		      $(formwrap+"#subjectwrap,"+formwrap+"#subjectwrap+.subjectWarn").hide();
 		    });
 
-		    $('body').on('click', '.overlayContentforxiaoma_toefl2 .pop', function(){
+		    $('body').on(clickEvent, '.overlayContentforxiaoma_toefl2 .pop', function(){
 		      $('.overlayContentforxiaoma_toefl').show();
 		      $('.layer-bg-toefl-type1').show();
 		    });
@@ -91,11 +94,11 @@ $(function(){
 		    	$('.overlayContentforxiaoma_toefl2').show();
 		    }
 
-		    $('body').on('click', '.overlay-success .close_btn', function(){
+		    $('body').on(clickEvent, '.overlay-success .close_btn', function(){
 		      $('.layer-bg-success').hide();
 		      $('.overlay-success').hide();
 		    });
-		    $('body').on('click', '.layer-bg-success', function(){
+		    $('body').on(clickEvent, '.layer-bg-success', function(){
 		      $('.layer-bg-success').hide();
 		      $('.overlay-success').hide();
 		    });
