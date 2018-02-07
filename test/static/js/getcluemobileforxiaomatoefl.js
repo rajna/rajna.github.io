@@ -3,6 +3,7 @@ $(function(){
 		var u = navigator.userAgent;
 		var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
 		var clickEvent=isAndroid?"click":"touchend";
+		alert(clickEvent);
 		 var params={
 		     "userform_save":"http://sat.sljy.com/ajax/userform/setuserclew"
 		  }; 
