@@ -58,7 +58,7 @@ $(function(){
 		  //  params=$.extend({},params,options);
 		  //}
 		    var formwrap=".overlayContentforxiaoma_toefl ";
-		    $('.xiaomaclue-mobile-toefl-type1').on('touchend',function(){
+		    $('.xiaomaclue-mobile-toefl-type1').on('click',function(){
 		      $('.overlayContentforxiaoma_toefl').show();
 		      $('.layer-bg-toefl-type1').show();
 		    });
@@ -66,18 +66,18 @@ $(function(){
 
 
 		    /*隐藏浮层*/
-		    $('body').on('touchend', '.overlayContentforxiaoma_toefl .close_btn', function(){
+		    $('body').on('click', '.overlayContentforxiaoma_toefl .close_btn', function(){
 		      $('.overlayContentforxiaoma_toefl').hide();
 		      $('.layer-bg-toefl-type1').hide();
 		      $(formwrap+"#subjectwrap,"+formwrap+"#subjectwrap+.subjectWarn").hide();
 		    });
-		    $('body').on('touchend', '.layer-bg-toefl-type1', function(){
+		    $('body').on('click', '.layer-bg-toefl-type1', function(){
 		      $('.overlayContentforxiaoma_toefl').hide();
 		      $('.layer-bg-toefl-type1').hide();
 		      $(formwrap+"#subjectwrap,"+formwrap+"#subjectwrap+.subjectWarn").hide();
 		    });
 
-		    $('body').on('touchend', '.overlayContentforxiaoma_toefl2 .pop', function(){
+		    $('body').on('click', '.overlayContentforxiaoma_toefl2 .pop', function(){
 		      $('.overlayContentforxiaoma_toefl').show();
 		      $('.layer-bg-toefl-type1').show();
 		    });
@@ -91,17 +91,17 @@ $(function(){
 		    	$('.overlayContentforxiaoma_toefl2').show();
 		    }
 
-		    $('body').on('touchend', '.overlay-success .close_btn', function(){
+		    $('body').on('click', '.overlay-success .close_btn', function(){
 		      $('.layer-bg-success').hide();
 		      $('.overlay-success').hide();
 		    });
-		    $('body').on('touchend', '.layer-bg-success', function(){
+		    $('body').on('click', '.layer-bg-success', function(){
 		      $('.layer-bg-success').hide();
 		      $('.overlay-success').hide();
 		    });
 
 		    /*注册按钮点击*/
-		    $('body').on('touchend', '.overlayContentforxiaoma_toefl .regBtn', function(){
+		    $('body').on('click', '.overlayContentforxiaoma_toefl .regBtn', function(){
 		      var tel =$.trim($(formwrap+'.phone').val());
 		      var telReg = !tel.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[0-9]|18[0-9]|14[57])[0-9]{8}$/);
 		      $(formwrap+'.warnTips').css('visibility','hidden');
