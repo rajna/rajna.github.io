@@ -1,0 +1,1 @@
+webpackJsonp([52],{0:function(n,i,t){n.exports=t(288)},288:function(n,i,t){(function(n){"use strict";var i=t(29);t(30),t(36),t(289),n(function(){(0,i.setFont)(),n(".weixinAudio").on("click",function(i){n(this).find(".audio_play_area div").toggle();var t=document.getElementById("media");t.paused?t.play():t.pause()})})}).call(i,t(28))},289:function(n,i){}});
