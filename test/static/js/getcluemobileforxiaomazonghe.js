@@ -84,6 +84,10 @@ $(function(){
 				$('.notwechat').show();
 			}
 
+			$('body').on(clickEvent, '.copybtn', function(){
+		      alert("复制成功");
+		    });
+
 		    var formwrap=".overlayContentforxiaoma_zhonghe ";
 		    $('.xiaomaclue-mobile-zonghe-type1').on(clickEvent,function(){
 		      $('.overlayContentforxiaoma_zhonghe').show();
