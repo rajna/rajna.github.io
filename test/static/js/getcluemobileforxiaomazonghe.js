@@ -87,6 +87,7 @@ $(function(){
 // 					      alert("复制成功");
 // 					    });
 			}
+		alert(Clipboard);
 		    var clipboard=new Clipboard('.copybtn');
 		    var formwrap=".overlayContentforxiaoma_zhonghe ";
 		    $('.xiaomaclue-mobile-zonghe-type1').on(clickEvent,function(){
