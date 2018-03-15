@@ -83,9 +83,9 @@ $(function(){
 			}else{
 				$('.notwechat').show();
 				var clipboard=new Clipboard('.copybtn');
-				$('body').on(clickEvent, '.copybtn', function(){
-					      alert("复制成功");
-					    });
+// 				$('body').on(clickEvent, '.copybtn', function(){
+// 					      alert("复制成功");
+// 					    });
 			}
 
 		    var formwrap=".overlayContentforxiaoma_zhonghe ";
