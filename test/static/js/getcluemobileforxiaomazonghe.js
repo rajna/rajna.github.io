@@ -73,7 +73,7 @@ $(function(){
 				if(ua.match(/MicroMessenger/i) == 'micromessenger'||ua.match(/MicroMessenger/i) == 'MQQbrowser'||ua.match(/MicroMessenger/i) == 'mobile Mqqbrowser'){ 
 				return true; 
 				}else{ 
-					 var clipboard=new Clipboard('.copybtn')
+					 
 					return false; 
 				} 
 			} 
@@ -82,6 +82,10 @@ $(function(){
 				$('.wechat').show();
 			}else{
 				$('.notwechat').show();
+				var clipboard=new Clipboard('.copybtn');
+				$('body').on(clickEvent, '.copybtn', function(){
+					      alert("复制成功");
+					    });
 			}
 
 		    var formwrap=".overlayContentforxiaoma_zhonghe ";
