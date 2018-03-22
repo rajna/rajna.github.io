@@ -1,5 +1,5 @@
 ;(function(){
-        localstorage.clear();
+        localStorage.clear();
 	    var firstchild=$('body').children().get(0);
 	    $(firstchild).before(
 	    	   '<style type="text/css">'+
