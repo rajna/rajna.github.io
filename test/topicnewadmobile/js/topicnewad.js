@@ -8,12 +8,14 @@
 			  '<div class="topicnewad"><img src="img/banner.jpg"/></div>');
     	var now=new Date();
     	var last=localStorage.getItem("topicnewadlastclosetime");
-    	var showtimeout;
+        if(window.showtimeout){
+            clearTimeout(window.showtimeout);
+        };
     	function lazyhide(){
-    		showtimeout=setTimeout(function(){
+    		window.showtimeout=setTimeout(function(){
     			$('.topicnewad').hide();
     			localStorage.setItem("topicnewadlastclosetime",new Date());
-    			clearTimeout(showtimeout);
+    			clearTimeout(window.showtimeout);
     		},30000);
     	};
     	if(!last){
