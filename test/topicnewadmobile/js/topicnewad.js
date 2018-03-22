@@ -27,11 +27,11 @@
 	    	var days=Math.floor(datedelt/(24*3600*1000));
 	    	var leave1=datedelt%(24*3600*1000);    //计算天数后剩余的毫秒数  
 	    	var hours=Math.floor(leave1/(3600*1000));  
-    		if(hours>=1||days>=1){
+    		//if(hours>=1||days>=1){
     			$('.topicnewad').show();
     			lazyhide();
-	    	}else{
+	    	//}else{
 	    		//$('.topicnewad').hide();
-	    	}
+	    	//}
     	}
     })();
