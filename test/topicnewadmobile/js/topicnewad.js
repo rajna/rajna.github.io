@@ -14,13 +14,11 @@
                 $('.topicnewad').hide();
                 localStorage.setItem("topicnewadlastclosetime",new Date());
                 clearTimeout(window.showtimeout);
-            },3000);
+            },10000);
         };
         var img = new Image();
         img.src = $(".topicnewad img").attr("src");
-        alert("dd");
         img.onload = function(){
-          alert("加载完成！");
             if(!last){
                 $('.topicnewad').show();
                 lazyhide();
