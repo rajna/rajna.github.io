@@ -14,7 +14,7 @@
     			$('.topicnewad').hide();
     			localStorage.setItem("topicnewadlastclosetime",new Date());
     			clearTimeout(showtimeout);
-    		},3000);
+    		},30000);
     	};
     	if(!last){
     		$('.topicnewad').show();
