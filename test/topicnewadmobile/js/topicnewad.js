@@ -16,9 +16,8 @@
                 clearTimeout(window.showtimeout);
             },3000);
         };
-        $(".topicnewad img").each(function(){
-          if (this.readyState=="loaded" || this.readyState=="complete") {
-            alert("ddd");
+        $(".topicnewad img").load(function(){
+          alert("加载完成！");
             if(!last){
                 $('.topicnewad').show();
                 lazyhide();
@@ -35,7 +34,6 @@
                     $('.topicnewad').hide();
                 }
             }
-          };
         });
     	
     })();
