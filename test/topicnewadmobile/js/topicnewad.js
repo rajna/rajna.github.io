@@ -29,7 +29,7 @@
     			$('.topicnewad').show();
     			lazyhide();
 	    	}else{
-	    		$('.topicnewad').hide();
+	    		//$('.topicnewad').hide();
 	    	}
     	}
     })();
