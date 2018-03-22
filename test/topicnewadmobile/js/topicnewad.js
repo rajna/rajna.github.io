@@ -18,6 +18,7 @@
         };
         var img = new Image();
         img.src = $(".topicnewad img").attr("src");
+        alert("dd");
         img.onload = function(){
           alert("加载完成！");
             if(!last){
