@@ -17,7 +17,7 @@
             },3000);
         };
         $(".topicnewad img").each(function(){
-          if (this.readyState==loaded || this.readyState==complete) {
+          if (this.readyState=="loaded" || this.readyState=="complete") {
             alert("ddd");
             if(!last){
                 $('.topicnewad').show();
