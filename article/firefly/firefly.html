@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>three.js firefly</title>
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			body {
+				margin: 0;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+
+		<script src="js/three.min.js"></script>
+
+		<script src="js/libs/stats.min.js"></script>
+
+		<script src="js/objects/ShadowMesh.js"></script>
+
+		<script>
+
+			// GLOBALS ======================================================
+
+			var camera, scene, renderer;
+			var lightPosition4D = new THREE.Vector4();
+			//正面光照
+			var light = new THREE.DirectionalLight(0x42215a, 1);
+			var lightOpp = new THREE.DirectionalLight(0xf57b8c, 0.7);
+			var groundMesh;
+			var normalVector = new THREE.Vector3( 0, 1, 0 );
+			var planeConstant = 0.01; // this value must be slightly higher than the groundMesh's y position of 0.0
+			var groundPlane = new THREE.Plane( normalVector, planeConstant );
+
+			var cylinderShadow;
+
+			var light1,light2;
+
+			// SETUP Trees ========================================================
+
+
+			var map = "XXXXXXX  \n" +
+             "X     X  \n" +
+             "X  S  X  \n" +
+             "X     X  \n" +
+             "X   S XXX\n" +
+             "XXX     X\n" +
+             "  XX  S X\n" +
+             "   X    X\n" +
+             "   XXXXXX";
+
+			   map = map.split("\n");
+			   var HORIZONTAL_UNIT = 100,
+			       VERTICAL_UNIT   = 100,
+			       ZSIZE = map.length * HORIZONTAL_UNIT,
+			       XSIZE = map[0].length * HORIZONTAL_UNIT;
+
+			function addVoxel(type, row, col) {
+			     var z = (row+1) * HORIZONTAL_UNIT - ZSIZE * 0.5,
+			     x = (col+1) * HORIZONTAL_UNIT - XSIZE * 0.5;
+			     switch(type) {
+			       case ' ': break;
+			       case 'S':
+			         //spawnPoints.push(new THREE.Vector3(x, 0, z));
+			         break;
+			       case 'X':
+
+			         var geometry = new THREE.CylinderGeometry( 0.6, 0.6, 200);
+					 geometry.applyMatrix( new THREE.Matrix4().makeTranslation( 0, 0.5, 0 ) );
+					var material = new THREE.MeshPhongMaterial( { color: 0xffffff, emissive: 0x4c2164 } );
+
+					//var cityGeometry = new THREE.Geometry();
+					//for (var i = 0; i < 30; i++) {
+						var building = new THREE.Mesh(geometry.clone(),material.clone());
+						//building.position.x = Math.floor( Math.random() * 200 - 100 ) * 4;
+						//building.position.z = Math.floor( Math.random() * 200 - 100 ) * 4;
+						building.position.x=x;
+						building.position.z=z;
+						building.scale.x  = 20;
+						building.scale.y  = 1000;
+						building.scale.z  = 5;
+						building.castShadow = true;
+						building.receiveShadow = true;
+						scene.add(building);
+						//THREE.GeometryUtils.merge(cityGeometry, building);
+					//}
+
+			         break;
+			} }
+
+
+			
+
+			// SETUP ========================================================
+
+			function setup() {
+				document.body.style.backgroundColor = '#d7f0f7';
+				setupThreeJS();
+				setupWorld();
+
+				requestAnimationFrame(function animate() {
+					draw();
+					update();
+					requestAnimationFrame( animate );
+				});
+			}
+
+			function setupThreeJS() {
+				scene = new THREE.Scene();
+				scene.fog = new THREE.FogExp2(0xff949c, 0.0025);
+
+				//环境光
+				//var ambient = new THREE.AmbientLight( 0x4a295a );
+				//scene.add( ambient );
+
+				camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 3000 );
+				camera.position.y = 100;
+				camera.position.z = 400;
+				//camera.rotation.x = -45 * Math.PI / 180;
+				scene.add( camera );
+
+				renderer = new THREE.WebGLRenderer({antialias: true});
+				renderer.setClearColor(scene.fog.color);
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.shadowMap.enabled = true;
+				renderer.shadowMap.type = THREE.PCFShadowMap;
+
+				document.body.appendChild( renderer.domElement );
+
+				lightOpp.position.set( -200, 100, 100 );
+				lightOpp.target.position.set( 0, 100, 0 );
+				//scene.add(lightOpp);
+
+				light.position.set( -500, 600, -1000 );
+				light.target.position.set( 0, 0, 0 );
+				light.castShadow = true;
+				// light.shadowMapWidth = 2048;
+				// light.shadowMapHeight = 2048;
+				// var d = 1000;
+				// light.shadowCameraLeft = d;
+				// light.shadowCameraRight = -d;
+				// light.shadowCameraTop = d;
+				// light.shadowCameraBottom = -d;
+				// light.shadowCameraFar = 2500;
+				light.shadow = new THREE.LightShadow( new THREE.PerspectiveCamera( 50, 1, 700, 3000 ) );
+
+				light.shadow.bias = 0.0001;
+
+				light.shadow.mapSize.width = 2048;
+				light.shadow.mapSize.height = 2048;
+				scene.add(light);
+
+
+				//Draw light
+				var c1 = 0xffffff, c2 = 0x0040ff, c3 = 0x80ff80, c4 = 0xffaa00, c5 = 0x00ffaa, c6 = 0xff1100;
+
+				var intensity = 20.5;
+				var distance = 200;
+				var decay = 9.0;
+
+				var sphere = new THREE.SphereGeometry( 5, 16, 8 );
+
+				light1 = new THREE.PointLight( c1, intensity, distance, decay );
+				light1.add( new THREE.Mesh( sphere, new THREE.MeshBasicMaterial( { color: c1 } ) ) );
+
+				light1.position.set( 50, 50, 300 );
+				scene.add( light1 );
+
+
+				var sphere2 = new THREE.SphereGeometry( 5, 1, 1 );
+
+				light2 = new THREE.PointLight( c1, intensity, 800, decay );
+				light2.add( new THREE.Mesh( sphere, new THREE.MeshBasicMaterial( { color: c1 } ) ) );
+
+				light2.position.set( 0, 0, 100 );
+
+				var geometry = new THREE.SphereGeometry( 130, 50, 50);  
+var mesh2 = new THREE.Mesh(geometry,new THREE.MeshBasicMaterial( { color: 0xA1634E} ) );  
+mesh2.scale.x = 0.75;  
+scene.add( mesh2 );  
+				//scene.add( light2 );
+			}
+
+			function setupWorld() {
+				//var geo = new THREE.PlaneGeometry(2000, 2000, 20, 20);
+				//var mat = new THREE.MeshLambertMaterial({color: 0x42215a, overdraw: true});
+				//var floor = new THREE.Mesh(geo, mat);
+				//floor.rotation.x = -0.5 * Math.PI;
+
+				//floor.receiveShadow = true;
+
+				//scene.add(floor);
+
+
+				var groundGeometry = new THREE.BoxGeometry( 2000, 0.01, 2000 );
+				var groundMaterial = new THREE.MeshLambertMaterial( { color: 'rgb(255,255,255)' } );
+				groundMesh = new THREE.Mesh( groundGeometry, groundMaterial );
+				groundMesh.position.y = 0.0; //this value must be slightly lower than the planeConstant (0.01) parameter above
+				groundMesh.receiveShadow = true;
+				scene.add( groundMesh );
+
+
+				
+				var geometry = new THREE.CylinderGeometry( 0.6, 0.6, 200);
+				geometry.applyMatrix( new THREE.Matrix4().makeTranslation( 0, 0.5, 0 ) );
+				var material = new THREE.MeshPhongMaterial( { color: 0xffffff, emissive: 0x4c2164 } );
+
+				//var cityGeometry = new THREE.Geometry();
+				// for (var i = 0; i < 30; i++) {
+				// 	var building = new THREE.Mesh(geometry.clone(),material.clone());
+				// 	building.position.x = Math.floor( Math.random() * 200 - 100 ) * 4;
+				// 	building.position.z = Math.floor( Math.random() * 200 - 100 ) * 4;
+				// 	building.scale.x  = 20;
+				// 	building.scale.y  = 1000;
+				// 	building.scale.z  = 5;
+				// 	building.castShadow = true;
+				// 	building.receiveShadow = true;
+				// 	scene.add(building);
+				// 	//THREE.GeometryUtils.merge(cityGeometry, building);
+				// }
+				for (var i = 0, rows = map.length; i < rows; i++) {
+				     for (var j = 0, cols = map[i].length; j < cols; j++) {
+				       addVoxel(map[i].charAt(j), i, j);
+				     }
+				}
+				//var tree = new THREE.Mesh(cityGeometry, material);
+				//tree.castShadow = true;
+				//tree.receiveShadow = true;
+				//scene.add(tree);
+			}
+
+			// DRAW =========================================================
+
+			function draw() {
+				//cylinderShadow.update( groundPlane, lightPosition4D );
+
+				camera.position.x+=0.05;
+
+				var time = Date.now() * 0.00025;
+				var z = 20, d = 50;
+
+				light1.position.x = Math.sin( time * 7 ) * d;
+				light1.position.z = 100+Math.cos( time * 10 ) * d;
+				light1.position.y = 100+Math.sin( time * 6 ) * d;
+
+				renderer.render( scene, camera );
+			}
+
+			// UPDATE =======================================================
+
+			function update() {
+			}
+
+			// RUN ==========================================================
+
+			setup();
+
+
+		</script>
+
+	</body>
+
+</html>
