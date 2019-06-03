@@ -102,14 +102,14 @@ function setupThreeJS() {
 	scene = new THREE.Scene();
 	//scene.fog = new THREE.FogExp2(0xdcf7e7, 0.001);
 
-	renderer = new THREE.WebGLRenderer({antialias: true});
+	renderer = new THREE.WebGLRenderer({antialias: true,alpha: true,});
 	renderer.setSize(window.innerWidth, window.innerHeight);
-	renderer.setClearColor(0xffffff,1);
+	//renderer.setClearColor(0xffffff,1);
 	document.body.appendChild(renderer.domElement);
 
 	camera = new THREE.PerspectiveCamera(60, renderer.domElement.width / renderer.domElement.height, 1, 10000);
 	camera.rotation.x=-Math.PI/6;
-	camera.position.set(0,800,1800);
+	camera.position.set(0,1500,2500);
 	
 	clock = new THREE.Clock(false);
 }
@@ -271,6 +271,25 @@ function update(delta) {
 
 }
 
+function generateTexture() {
+				var canvas = document.createElement( 'canvas' );
+				canvas.width = 256;
+				canvas.height = 256;
+				var context = canvas.getContext( '2d' );
+				var image = context.getImageData( 0, 0, 256, 256 );
+				var x = 0, y = 0;
+				for ( var i = 0, j = 0, l = image.data.length; i < l; i += 4, j ++ ) {
+					x = j % 256;
+					y = x == 0 ? y + 1 : y;
+					image.data[ i ] = 255;
+					image.data[ i + 1 ] = 255;
+					image.data[ i + 2 ] = 255;
+					image.data[ i + 3 ] = Math.floor( x ^ y );
+				}
+				context.putImageData( image, 0, 0 );
+				return canvas;
+			}
+
 function buffer_texture_setup(){
     //Create buffer scene
     bufferScene = new THREE.Scene();
@@ -296,12 +315,18 @@ function buffer_texture_setup(){
     quad.position.set(HORIZONTAL_UNIT, 0, -HORIZONTAL_UNIT); // Ideally this wouldn't be needed
     quad.rotation.x = Math.PI * -0.5;
    // scene.add(quad);
-    var material = new THREE.MeshPhongMaterial({ color: 0xaaaaaa });
+    var texture = new THREE.Texture( generateTexture() );
+    texture.needsUpdate = true;
+    var material = new THREE.MeshLambertMaterial( { map: texture, transparent: true } );
 	var floorGeo = new THREE.PlaneGeometry(XSIZE, ZSIZE, 20, 20);
 	floor = new THREE.Mesh(floorGeo, material);
 	floor.rotation.x = Math.PI * -0.5;
 	floor.position.set(HORIZONTAL_UNIT, 0, -HORIZONTAL_UNIT); // Ideally this wouldn't be needed
-	scene.add(floor);
+	//scene.add(floor);
+
+	var helper = new THREE.GridHelper( 1450, 13, 0xb750b7, 0xb750b7 );
+				helper.position.set(HORIZONTAL_UNIT, 0, -HORIZONTAL_UNIT);
+				scene.add( helper );
 }
 
 

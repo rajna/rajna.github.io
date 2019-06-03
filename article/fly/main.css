@@ -8,11 +8,13 @@
 body {
 	margin: 0;
 	overflow: hidden;
+	min-height: 100vh;
+	--color-top-right: magenta;
+    --color-bottom-left: red;
+	background: linear-gradient(-135deg, var(--color-top-right), var(--color-bottom-left));
 }
 
-canvas {
-	background-color: #FFFFFF;
-}
+
 
 #start {
 	cursor: pointer;

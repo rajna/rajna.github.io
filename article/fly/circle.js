@@ -1,7 +1,7 @@
 function Bullet(direction) {
 	THREE.Mesh.call(this,
 		new THREE.SphereGeometry(Bullet.RADIUS, 6, 6),
-		new THREE.MeshBasicMaterial({ color: 0x333333 })
+		new THREE.MeshBasicMaterial({ color: 0xffffff })
 	);
 
 
@@ -69,7 +69,7 @@ Bullet.prototype = Object.create(THREE.Mesh.prototype);
 
 Bullet.prototype.constructor = Bullet;
 
-Bullet.RADIUS = 10;
+Bullet.RADIUS = 20;
 
 Bullet.CIRCLE_DISTANCE=40;
 
