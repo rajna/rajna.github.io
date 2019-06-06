@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>three.js intro</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		
+		<style>
+			body {
+				font-family: Verdana;
+				background-color: #000;
+				margin: 0px;
+				overflow: hidden;
+			}
+
+			.textwrap{
+				position:absolute;
+				width:100%;
+				text-align:center;
+				color:#fff;
+				-webkit-perspective: 401px;
+    			perspective: 401px;
+    			z-index:2;
+			}
+
+			
+
+			.intro{
+				position:relative;
+				z-index:3;
+				font-size: 10px;
+				color:#878787;
+				width: 50px;
+				margin:0 auto 30px auto;
+				//-webkit-animation:textintrowave 1.5s;
+			}
+
+			.intro:after{
+				content:"";
+				width:10px;
+				height:1px;
+				background-color: #94894a;
+				position: absolute;
+				top:6px;
+				left:-20px;
+			}
+			.intro:before{
+				content:"";
+				width:10px;
+				height:1px;
+				background-color: #94894a;
+				position: absolute;
+				top:6px;
+				right:-20px;
+			}
+
+			.animatetext{
+				position: relative;
+				left:40px;
+				width:190px;
+				display: block;
+				line-height: 20px;
+				white-space:nowrap;
+				overflow:hidden;
+
+				-webkit-animation: showword 2.5s;
+				animation: showword 2.5s;
+
+				
+			}
+
+			@-webkit-keyframes showword{
+			  from { width: 0;}
+			  to { width: 190;}
+			}
+
+			@keyframes showword{
+			  from { width: 0;}
+			  to { width: 190;}
+			}
+
+
+			.textwrap:after{
+				content:"";
+				display: block;
+				width: 2px;
+				height:2px;
+				background-color: transparent;
+				position: absolute;
+				top:78px;
+				left:-1px;
+				margin-left:50%;
+				border-radius: 100%;
+				z-index:1;
+				-webkit-box-shadow: 0 0 110px 110px #141414;
+				box-shadow: 0 0 110px 110px #141414;
+			}
+			
+
+			.intro .scaleLage{
+				padding:0px;
+				font-size: 10px;
+				font-weight: normal;
+				color:#878787;
+				animation-timing-function:cubic-bezier(.09,1.19,.85,.99);
+				z-index:3;
+				position: relative;
+			}
+
+
+			.sub-main-w3 {
+			    position: absolute;
+			    top:150px;
+			    z-index:1000;
+			    width:100%;
+			    display: flex;
+			    align-items: center;
+			    -webkit-box-pack: center;
+			    -moz-box-pack: center;
+			    -ms-flex-pack: center;
+			    -webkit-justify-content: center;
+			    justify-content: center;
+			}
+
+			.sub-main-w3 form {
+			    max-width: 400px;
+			    margin: 0 5vw;
+			    background: rgba(255, 108, 96, 0.3);
+			    padding: 3.5vw;
+			    box-sizing: border-box;
+			    display: -webkit-flex;
+			    display: flex;
+			    flex-wrap: wrap;
+			    justify-content: center;
+			    border-radius: 250px 120px 250px 120px;
+			}
+
+			h2 {
+			    color: #fff;
+			    font-size: 22px;
+			    font-weight: 500;
+			    letter-spacing: 1px;
+			    text-transform: capitalize;
+			    margin-bottom: 1em;
+			    position: relative;
+			}
+
+			h2:before {
+			    content: "";
+			    width: 20px;
+			    height: 1px;
+			    background-color: #94894a;
+			    position: absolute;
+			    top: 15px;
+			    right: -30px;
+			}
+
+			h2:after {
+			    content: "";
+			    width: 20px;
+			    height: 1px;
+			    background-color: #94894a;
+			    position: absolute;
+			    top: 15px;
+			    left: -30px;
+			}
+
+			.form-style-agile {
+			    margin-bottom: 1.5em;
+			    flex-basis: 100%;
+			    -webkit-flex-basis: 100%;
+			}
+
+			.sub-main-w3 label {
+			    font-size: 14px;
+			    color: #fff;
+			    display: inline-block;
+			    font-weight: 500;
+			    margin-bottom: 12px;
+			    text-transform: capitalize;
+			    letter-spacing: 1px;
+			}
+
+			.sub-main-w3 label i {
+			    font-size: 15px;
+			    margin-left: 5px;
+			    color: #f7296f;
+			    border-radius: 50%;
+			    line-height: 1.9;
+			    text-align: center;
+			}
+
+			.form-style-agile input[type="text"], .form-style-agile input[type="password"] {
+			    width: 100%;
+			    color: #000;
+			    outline: none;
+			    font-size: 14px;
+			    letter-spacing: 1px;
+			    padding: 15px 15px;
+			    box-sizing: border-box;
+			    border: none;
+			    border: 1px solid #000;
+			    background: #fff;
+			}
+
+			.wthree-text {
+			    text-align: center;
+			    width: 100%;
+			}
+
+			.wthree-text ul {
+				padding:0;
+			}
+
+			.wthree-text ul li {
+			    display: inline-block;
+			}
+
+			.wthree-text ul li:nth-child(1) {
+			    float: left;
+			}
+
+			.sub-main-w3 label {
+			    font-size: 14px;
+			    color: #fff;
+			    display: inline-block;
+			    font-weight: 500;
+			    margin-bottom: 12px;
+			    text-transform: capitalize;
+			    letter-spacing: 1px;
+			}
+
+			.wthree-text label {
+			    font-size: 15px;
+			    color: #fff;
+			    cursor: pointer;
+			    position: relative;
+			}
+
+			input[type="checkbox" i] {
+			    -webkit-appearance: checkbox;
+			    box-sizing: border-box;
+			}
+
+			input.checkbox {
+			    background: #f7296f;
+			    cursor: pointer;
+			    width: 1.2em;
+			    height: 1.2em;
+			    vertical-align: text-bottom;
+			}
+
+			.wthree-text ul li a {
+			    color: #fff;
+			    font-size: 14px;
+			    letter-spacing: 1px;
+			    font-weight: 500;
+			}
+
+
+			.sub-main-w3 input[type="submit"] {
+			    color: #fff;
+			    background: rgba(248,211,71,1);
+			    border: none;
+			    padding: 13px 0;
+			    margin-top: 30px;
+			    outline: none;
+			    width: 36%;
+			    font-size: 16px;
+			    cursor: pointer;
+			    letter-spacing: 2px;
+			    -webkit-transition: 0.5s all;
+			    -o-transition: 0.5s all;
+			    -moz-transition: 0.5s all;
+			    -ms-transition: 0.5s all;
+			    transition: 0.5s all;
+			    
+			}
+
+		</style>
+	</head>
+	<body>
+
+		<div class="sub-main-w3">
+		<form action="#" method="post">
+			<h2>登录
+				<i class="fas fa-level-down-alt"></i>
+			</h2>
+			<div class="form-style-agile">
+				<label>
+					<i class="fas fa-user"></i>
+					用户名
+				</label>
+				<input placeholder="用户名" name="Name" type="text" required="">
+			</div>
+			<div class="form-style-agile">
+				<label>
+					<i class="fas fa-unlock-alt"></i>
+					密码
+				</label>
+				<input placeholder="密码" name="Password" type="password" required="">
+			</div>
+			<!-- checkbox -->
+			<div class="wthree-text">
+				<ul>
+					<li>
+						<label class="anim">
+							<input type="checkbox" class="checkbox" required="">
+							<span>保持登录</span>
+						</label>
+					</li>
+					<li>
+						<a href="#">忘记密码?</a>
+					</li>
+				</ul>
+			</div>
+			<!-- //checkbox -->
+			<input type="submit" value="登录">
+		</form>
+	</div>
+
+		<script src="js/three.min.js"></script>
+
+		<script src="js/renderers/CanvasRenderer.js"></script>
+
+
+		<script>
+
+			var container, stats;
+
+			var camera, scene, renderer;
+
+			var cube, plane,particles = [],star;
+
+			var targetRotation = 0;
+			var targetRotationOnMouseDown = 0;
+
+			var mouseX = 0;
+			var mouseXOnMouseDown = 0;
+
+			var windowHalfX = window.innerWidth / 2;
+			var windowHalfY = window.innerHeight / 2;
+
+			init();
+			animate();
+			
+
+			function particleRender(context) {
+			    context.beginPath();
+			    context.arc(0, 0, 1, 0, 2*Math.PI, true);
+			    context.fill();
+			}
+
+			function getRandomColor() {
+			    var r = 255*Math.random()|0,
+			        g = 255*Math.random()|0,
+			        b = 255*Math.random()|0;
+			    // return 'rgb(' + r + ',' + g + ',' + b + ')';
+			    return '0x' + parseInt(r, 16) + parseInt(g, 16) + parseInt( b, 16);
+			}
+
+			function makeBalls(){
+				for ( var i = 0; i < 20; i++ ) {
+					var x = Math.random() * window.innerWidth*2 - window.innerWidth*1;
+					var y = Math.random() * window.innerHeight*2 - window.innerHeight*1;
+					var z = Math.random() * 1000 -500;
+					var geometry = new THREE.SphereGeometry( 4, 32, 32 );
+					var material = new THREE.MeshBasicMaterial( {color: 0xffffff} );
+					var sphere = new THREE.Mesh( geometry, material );
+					sphere.position.x = x;
+					sphere.position.y = y;
+					sphere.position.z = z;
+					scene.add( sphere );
+					star=sphere;
+				}
+				
+			}
+
+			// creates a random field of Particle object
+			function makeParticles() {
+
+			    var particles = 60;
+
+				var geometry = new THREE.BufferGeometry();
+
+				var positions = new Float32Array( particles * 3 );
+				var colors = new Float32Array( particles * 3 );
+
+				var color = new THREE.Color();
+
+				var n = 2000; // particles spread in the cube
+
+				for ( var i = 0; i < positions.length; i += 3 ) {
+
+					// positions
+
+					var x = Math.random() * window.innerWidth*4 - window.innerWidth*2;
+					var y = Math.random() * window.innerHeight*4 - window.innerHeight*2;
+					var z = Math.random() * n -1.5*n;
+
+					positions[ i ]     = x;
+					positions[ i + 1 ] = y;
+					positions[ i + 2 ] = z;
+
+					// colors
+
+					var vx = 255;
+					var vy = 255;
+					var vz = 255;
+
+					color.setRGB( vx, vy, vz );
+
+					colors[ i ]     = color.r;
+					colors[ i + 1 ] = color.g;
+					colors[ i + 2 ] = color.b;
+
+				}
+
+				geometry.addAttribute( 'position', new THREE.BufferAttribute( positions, 3 ) );
+				geometry.addAttribute( 'color', new THREE.BufferAttribute( colors, 3 ) );
+
+				geometry.computeBoundingSphere();
+
+				var material = new THREE.PointsMaterial( { size:  Math.random()*20, vertexColors: THREE.VertexColors } );
+
+				var particleSystem = new THREE.Points( geometry, material );
+
+				scene.add( particleSystem );
+			}
+
+			function loadHtml(){
+				var title = document.createElement( 'div' );
+				title.style.top = (window.innerHeight/2-60)+'px';
+				title.setAttribute("class","textwrap");
+				
+				container.appendChild( title );
+			}
+
+			function init() {
+
+				container = document.createElement( 'div' );
+				document.body.appendChild( container );
+
+
+				loadHtml()
+
+				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 8000 );
+				camera.position.y = 150;
+				camera.position.z = 1050;
+
+				scene = new THREE.Scene();
+
+				// Cube
+				var geometry = new THREE.CylinderGeometry(180.43, 175.66, 1250, 12, 10, true);
+				material = new THREE.MeshBasicMaterial({shading: THREE.FlatShading, color: 0xf333333, wireframe: true, wireframeLinewidth: 1});
+				cube = new THREE.Mesh(geometry, material);
+				cube.scale.x = cube.scale.y = cube.scale.z = 1.44;
+				cube.position.y = 150;
+				cube.rotation.x = 1.41;
+				cube.rotation.y = 2.21;
+				cube.rotation.z = 0;
+				scene.add(cube);
+
+
+				// Plane
+
+				var geometry = new THREE.PlaneBufferGeometry( 200, 200 );
+				geometry.rotateX( - Math.PI / 2 );
+
+				var material = new THREE.MeshBasicMaterial( { color: 0xe0e0e0, overdraw: 0.5 } );
+
+
+				makeParticles();
+
+				makeBalls();
+
+				renderer = new THREE.WebGLRenderer();
+				renderer.setClearColor( 0xf141414 );
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				container.appendChild( renderer.domElement );
+
+				window.addEventListener( 'resize', onWindowResize, false );
+
+			}
+
+			function onWindowResize() {
+
+				windowHalfX = window.innerWidth / 2;
+				windowHalfY = window.innerHeight / 2;
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+			}
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+
+				//stats.begin();
+				render();
+				//stats.end();
+
+			}
+
+			function render() {
+				if(camera.position.z<300) return;
+				//plane.position.z+= ( targetRotation - cube.rotation.y ) * 0.18;
+				camera.position.z+=( targetRotation - cube.rotation.y ) * 0.18;
+				star.position.z-=( targetRotation - cube.rotation.y ) * 0.23;
+				if(camera.position.z>500){
+					targetRotation=-30
+				}else {
+					targetRotation=-5
+				}
+				renderer.render( scene, camera );
+
+			}
+
+		</script>
+
+	</body>
+
+</html>
